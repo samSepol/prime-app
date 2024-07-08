@@ -1,0 +1,22 @@
+.tableformat{
+    margin-top:3rem;
+}
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px; /* Optional: Adjust margin as needed */
+  }
+  
+  .edit-button {
+    background-color: #28a745; 
+    color: #fff; 
+    border: none;
+    margin-right: 5px;
+  }
+  
+  .delete-button {
+    background-color: #dc3545;
+    color: #fff; 
+    border:none;
+  }
+  

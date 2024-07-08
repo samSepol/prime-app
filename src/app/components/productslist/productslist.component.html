@@ -1,0 +1,63 @@
+<div class="button-container">
+  <button
+    pButton
+    pRipple
+    class="p-button-success"
+    (click)="openProductModalForm()"
+  >
+    Add Product
+  </button>
+</div>
+
+<app-product-dashboard></app-product-dashboard>
+<div class="card tableformat">
+  <p-table
+    [value]="products"
+    [paginator]="true"
+    [rows]="5"
+    [tableStyle]="{ 'min-width': '50rem' }"
+    [rowsPerPageOptions]="[5, 10, 20]"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width: 15%">Sr.No</th>
+        <th style="width: 25%" pSortableColumn="productName">
+          <p-sortIcon field="productName" />Product Name
+        </th>
+        <th style="width: 20%" pSortableColumn="productCategory">
+          <p-sortIcon field="productCategory" />Category
+        </th>
+        <th style="width: 20%" pSortableColumn="productPrice">
+          <p-sortIcon field="productPrice" />Price
+        </th>
+        <th style="width: 20%">Action</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-item let-i="rowIndex">
+      <tr>
+        <td>{{ i + 1 }}</td>
+        <td>{{ item?.productName }}</td>
+        <td>{{ item?.productCategory }}</td>
+        <td>{{ item?.productPrice }}</td>
+        <td>
+          <button
+            pButton
+            icon="pi pi-pencil"
+            class="edit-button"
+            (click)="editProduct(item)"
+          ></button>
+          <button
+            pButton
+            icon="pi pi-trash"
+            class="delete-button"
+            (click)="deleteProduct(item)"
+          ></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+
+<ng-template #productModalForm>
+  <app-create-product></app-create-product>
+</ng-template>

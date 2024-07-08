@@ -1,0 +1,52 @@
+<div class="p-fluid" #productModalForm>
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    <div class="p-field p-mb-3">
+      <label for="name">Product Name</label>
+      <input id="name" type="text" pInputText formControlName="productName" />
+    </div>
+    <div
+      *ngIf="submitted && productForm.get('productName')?.invalid"
+      class="p-error p-mb-3"
+    >
+      Product name is required.
+    </div>
+
+    <div class="p-field p-mb-3">
+      <label for="price">Price</label>
+      <input
+        id="price"
+        type="number"
+        pInputText
+        formControlName="productPrice"
+      />
+    </div>
+    <div
+      *ngIf="submitted && productForm.get('productPrice')?.invalid"
+      class="p-error p-mb-3"
+    >
+      Valid price is required.
+    </div>
+
+    <div class="p-field p-mb-3">
+      <label for="category">Category</label>
+      <p-dropdown
+        [options]="categories"
+        formControlName="productCategory"
+        placeholder="Select a Category"
+      ></p-dropdown>
+    </div>
+    <div
+      *ngIf="submitted && productForm.get('productCategory')?.invalid"
+      class="p-error p-mb-3"
+    >
+      Category is required.
+    </div>
+
+    <!-- Apply custom CSS class to center and adjust width -->
+    <div class="p-field p-mb-3 center-button">
+      <button pButton type="submit" class="p-button-success">
+        Add Product
+      </button>
+    </div>
+  </form>
+</div>
